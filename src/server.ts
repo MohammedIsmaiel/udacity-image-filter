@@ -31,15 +31,27 @@ var validUrl = require('valid-url');
   /**************************************************************************** */
 
   //! END @TODO1
-
+  let images:any = [];
   app.get("/filteredimage", async (req: Request, res: Response) => {
-    let img:String = req.query.image_url
-    if (!img) {return res.send("You must add an image_URL")}
+    let img:string = req.query.image_url;
+    if (!img) {return res.send("You must add an image_URL")};
     
-    if (!validUrl.isUri(img)){return res.send("You must add a valid image_URL")}
+    if (!validUrl.isUri(img)){return res.send("You must add a valid image_URL")};
 
+    let filtered_img:string;
+    filtered_img = await filterImageFromURL(img);
+    
+    res.sendFile(filtered_img, function (err) {
+      if (err) {
+        res.send("error in sending your file")
+      } else {
+        console.log('Sent:', filtered_img)
+      }
+    })
+    deleteLocalFiles([filtered_img])
   });
 
+  
   // Root Endpoint
   // Displays a simple message to the user
   app.get("/", async (req, res) => {
