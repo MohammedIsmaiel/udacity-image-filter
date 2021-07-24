@@ -9,8 +9,7 @@
     "dev": "ts-node-dev ./src/server.ts",
     "prod": "tsc && node ./www/server.js",
     "clean": "rimraf www/ || true",
-    "build": "npm run clean && tsc && cp package.json www/package.json && cd www && mkdir tmp && zip -r Archive.zip . && cd ..",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && tsc && cp package.json www/package.json && cd www && mkdir tmp && zip -r Archive.zip . && cd ..",    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -31,11 +30,8 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@types/jsonwebtoken": "^8.5.4",
     "express": "^4.17.1",
     "jimp": "^0.16.1",
-    "jsonwebtoken": "^8.5.1",
-    "rimraf": "^3.0.2",
-    "valid-url": "^1.0.9"
+    "rimraf": "^3.0.2"
   }
 }
