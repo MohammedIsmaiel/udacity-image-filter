@@ -10,13 +10,16 @@ import Jimp = require('jimp');
 //    an absolute path to a filtered image locally saved file
 export async function filterImageFromURL(inputURL: string): Promise<string>{
     return new Promise( async resolve => {
+        console.log("reading");
         const photo = await Jimp.read(inputURL);
         const outpath = '/tmp/filtered.'+Math.floor(Math.random() * 2000)+'.jpg';
+        console.log("before proccessing");
         await photo
-        .resize(256, 256) // resize
+        .resize(500, 500) // resize
         .quality(60) // set JPEG quality
         .greyscale() // set greyscale
         .write(__dirname+outpath, (img)=>{
+            console.log(__dirname+outpath);
             resolve(__dirname+outpath);
         });
     });

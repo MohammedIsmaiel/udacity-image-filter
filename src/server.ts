@@ -49,7 +49,6 @@ import jwt from "jsonwebtoken";
 }
 
 
-  let images:any = [];
   app.get("/filteredimage",requireAuth,async (req: Request, res: Response) => {
     let img:string = req.query.image_url;
     if (!img) {return res.send("You must add an image_URL")};
@@ -64,9 +63,9 @@ import jwt from "jsonwebtoken";
         res.send("error in sending your file")
       } else {
         console.log('Sent:', filtered_img)
+        deleteLocalFiles([filtered_img])
       }
     })
-    deleteLocalFiles([filtered_img])
   });
 
   var token;
