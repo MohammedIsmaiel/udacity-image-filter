@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "c97aefe9-5ec3-4bb7-808b-b7f28f937507",
+		"name": "udacity-image-filter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWhtZWRhbGkiLCJpYXQiOjE2MjcyMjYyNTl9.LqXPnzRAIUG1lLlBZmoEC6L-xED-MRJHfMykW1zhsGE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}filteredimage?image_url=https://thumbs-prod.si-cdn.com/P4Smi9MthEBXH7pdW8Y-bvwR6ts=/1072x720/filters:no_upscale()/https://public-media.si-cdn.com/filer/04/8e/048ed839-a581-48af-a0ae-fac6fec00948/gettyimages-168346757_web.jpg",
+					"host": [
+						"{{host}}filteredimage"
+					],
+					"query": [
+						{
+							"key": "image_url",
+							"value": "https://thumbs-prod.si-cdn.com/P4Smi9MthEBXH7pdW8Y-bvwR6ts=/1072x720/filters:no_upscale()/https://public-media.si-cdn.com/filer/04/8e/048ed839-a581-48af-a0ae-fac6fec00948/gettyimages-168346757_web.jpg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}get-access/ahmed",
+					"host": [
+						"{{host}}get-access"
+					],
+					"path": [
+						"ahmed"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://udacity-image-filter.eu-west-2.elasticbeanstalk.com/"
+		}
+	]
+}
