@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 import { Request, Response, NextFunction } from "express";
-const validUrl = require('valid-url');
+// const validUrl = require('valid-url');
 import jwt from "jsonwebtoken";
 
 (async () => {
@@ -47,12 +47,14 @@ import jwt from "jsonwebtoken";
       return next();
     });
 }
+
+
   let images:any = [];
-  app.get("/filteredimage", requireAuth,async (req: Request, res: Response) => {
+  app.get("/filteredimage",requireAuth,async (req: Request, res: Response) => {
     let img:string = req.query.image_url;
     if (!img) {return res.send("You must add an image_URL")};
     
-    if (!validUrl.isUri(img)){return res.send("You must add a valid image_URL")};
+    // if (!validUrl.isUri(img)){return res.send("You must add a valid image_URL")};
 
     let filtered_img:string;
     filtered_img = await filterImageFromURL(img);
@@ -83,11 +85,11 @@ import jwt from "jsonwebtoken";
   
   // Root Endpoint
   // Displays a simple message to the user
-  app.get("/", async (req, res) => {
+  app.get("/", async (req: Request, res: Response) => {
     res.send("try GET /filteredimage?image_url={{}}");
   });
 
-  app.get("/*", (req, res) => {
+  app.get("/*", (req: Request, res: Response) => {
     res.status(404).send("Not found");
   });
 
